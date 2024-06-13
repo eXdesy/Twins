@@ -17,10 +17,11 @@ export class AuthService {
     });
   }
 
-  login(username_register: string, password_register: string): Observable<any> {
+  login(username_register: string, password_register: string, current_id: number): Observable<any> {
     const user = {
       username: username_register,
       password: password_register,
+      current_id: current_id
     };
     
     const headers = new HttpHeaders({
@@ -31,8 +32,9 @@ export class AuthService {
     return this.http.post<any>(`${environment.apiUrl}/auth/login`, user, { headers });
   }
 
-  register(role: string, firstname_register: string, lastname_register: string, username_register: string, password_register: string, gender_register: string): Observable<any> {
+  register(user_id: number, role: string, firstname_register: string, lastname_register: string, username_register: string, password_register: string, gender_register: string): Observable<any> {
     const newUser = {
+			user_id: user_id,
       role: role,
       username: username_register,
       password: password_register,
