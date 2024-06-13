@@ -1,0 +1,32 @@
+version: '3.4'
+
+services:
+  twins-api:
+    container_name: twinsApi
+    image: exdesy/twins:twinsApi
+#    image: twins-api
+#    build:
+#      context: ./twinsApi
+#      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+
+  twins-app:
+    container_name: twinsInterface
+    image: exdesy/twins:twinsInterface
+#    image: twins-app
+#    build:
+#      context: ./twinsInterface
+#      dockerfile: Dockerfile
+    ports:
+      - 80:80
+    expose:
+      - 80
+    environment:
+      - apiUrl=http://twins-api:8000
+    networks:
+      - twins-network
+
+networks:
+  twins-network:
+    driver: bridge

@@ -1,0 +1,72 @@
+<div class="wrapper">
+  <div class="content">
+    <header>
+      <div class="heading">
+        <h1>SUPPORT</h1>
+      </div>
+    </header>
+    <main>
+      <div class="container" id="container">
+        <div class="prof-container">
+          <div class="prof">
+            <div class="project-info">
+              <div class="form__group field">
+                <input #username id="username" type="text" class="form__field" placeholder="Username" required="">
+                <label class="form__label">Username</label>
+              </div>
+              <div class="flex">
+                <div class="form__group field">
+                  <input #first_name type="text" class="form__field" placeholder="Fisrt Name" required="">
+                  <label class="form__label">Fisrt Name</label>
+                </div>
+                <div class="form__group field">
+                  <input #last_name type="text" class="form__field" placeholder="Last Name" required="">
+                  <label class="form__label">Last Name</label>
+                </div>
+              </div>
+              <div class="form__group field">
+                <textarea #description class="form__field" id="description" placeholder="Problem Description" 
+                  (input)="updateCharCount()" maxlength="250" required></textarea>
+                <label class="form__label">Problem Description</label>
+                <div class="char-counter" id="charCounter">{{ charCount }}/250</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="radio-input">
+        <label>
+          <input type="radio" id="value-1" name="value-radio" value="value-1" (click)="goBack()" checked>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Back</span>
+        </label>
+        <label>
+          <input type="radio" id="value-2" name="value-radio" value="value-2" (click)="onSupport(username.value, last_name.value, last_name.value, description.value)">
+          <span>Send</span>
+        </label>
+      </div>
+    </footer>
+  </div>
+</div>
+<div *ngIf="showCheck">
+	<app-check></app-check>
+</div>
+<script src="https://telegram.org./js/telegram-web-app.js">
+  // TELEGRAM API
+  let tg = window.Telegram.WebApp;
+  let registerBtn = document.getElementById('registerBtn');
+  tg.expand();
+
+  registerBtn.addEventListener('click', () => {
+    tg.initDataUnsafe.user.id;
+    document.getElementById('firstname').value = tg.initDataUnsafe.user.first_name;
+    document.getElementById('lastname').value = tg.initDataUnsafe.user.last_name;
+    document.getElementById('username').value = tg.initDataUnsafe.user.username;
+
+    // Pasar user_id a Angular
+    let appComponent = window.angular.element(document.querySelector('app-support')).scope().$ctrl;
+    appComponent.setUserId(tg.initDataUnsafe.user.id);    
+  }); 
+</script>

@@ -1,0 +1,192 @@
+.filters {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000030;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.filter {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
+	text-align: center;
+	gap: calc(var(--index) * 2);
+	background-color: #ffffff;
+	padding: calc(var(--index) * 2);
+	border-radius: 25px;
+	box-shadow: 0 2px 10px #0000001a;
+}
+.header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: calc(var(--index) * 1);
+	font-family: outfit;
+}
+.header_content {
+	display: flex;
+	flex-direction: row;
+	gap: calc(var(--index) * 2);
+	position: relative;
+}
+.back-button {
+	position: absolute;
+	left: 0;
+	width: calc(var(--index) * 5);
+	color: #E94057;
+	padding: calc(var(--index) * 1);
+	font-size: calc(var(--index) * 1);
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+.header h1 {
+	font-size: calc(var(--index) * 2);
+}
+.header p {
+	font-size: calc(var(--index) * 1.5);
+	color: #999999;
+}
+.interests {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(2, 1fr);
+	gap: calc(var(--index) * 1);
+}
+.interest {
+	background-color: #ffffff;
+	border: 1px solid #e94057;
+	border-radius: 25px;
+	padding: calc(var(--index) * 1);
+	font-size: calc(var(--index) * 1.2);
+	cursor: pointer;
+	transition: background-color 0.3s, border-color 0.3s;
+	font-family: outfit;
+	text-align: left;
+}
+.interest.selected {
+  background-color: #e94057;
+  color: #ffffff;
+}
+.continue-button {
+	width: 100%;
+	background-color: #E94057;
+	color: #ffffff;
+	border: none;
+	border-radius: 25px;
+	padding: calc(var(--index) * 1);
+	font-size: calc(var(--index) * 1.5);
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.report-back-button {
+	position: absolute;
+	left: 0;
+	width: calc(var(--index) * 5);
+	color: #8A2387;
+	padding: calc(var(--index) * 1);
+	font-size: calc(var(--index) * 1);
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+.report-interest {
+	background-color: #ffffff;
+	border: 1px solid #8A2387;
+	border-radius: 25px;
+	padding: calc(var(--index) * 1);
+	font-size: calc(var(--index) * 1.2);
+	cursor: pointer;
+	transition: background-color 0.3s, border-color 0.3s;
+	font-family: outfit;
+	text-align: left;
+}
+.report-interest.report {
+  background-color: #8A2387;
+  color: #ffffff;
+}
+.report-continue-button {
+	width: 100%;
+	background-color: #8A2387;
+	color: #ffffff;
+	border: none;
+	border-radius: 25px;
+	padding: calc(var(--index) * 1);
+	font-size: calc(var(--index) * 1.5);
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+.report-description {
+  position: relative;
+  padding: calc(var(--index) * 1) 0 0;
+  width: 100%;
+}
+.description {
+  font-family: outfit;
+  width: 100%;
+  min-height: calc(var(--index) * 3);
+  border: none;
+  border-bottom: 2px solid #999999;
+  outline: 0;
+  font-size: calc(var(--index) * 1.5);
+  color: #000000;
+  padding: calc(var(--index) * 0.3) 0;
+  background: transparent;
+  transition: border-color 0.2s;
+  overflow: hidden;
+  resize: none;
+}
+.description::placeholder {
+  color: transparent;
+}
+.description:placeholder-shown ~ .description-title {
+  font-size: calc(var(--index) * 1.5);
+  cursor: text;
+  top: calc(var(--index) * 1);
+}
+.description-title {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: calc(var(--index) * 1.5);
+  color: #999999;
+  pointer-events: none;
+}
+.description:focus {
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, #8A2387, #8A2387);
+  border-image-slice: 1;
+}
+.description:not(:placeholder-shown) ~ .description-title,
+.description:focus ~ .description-title {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: calc(var(--index) * 1);
+  color: #8A2387;
+  font-weight: 700;
+}	
+/* reset input */
+.description:required,
+.description:invalid {
+  box-shadow: none;
+}
+
+.char-counter {
+  font-size: calc(var(--index) * 1);
+  color: #999999;
+  position: absolute;
+  bottom: calc(var(--index) * -1.5);
+  right: 0;
+}

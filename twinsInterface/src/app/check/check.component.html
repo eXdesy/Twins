@@ -1,0 +1,152 @@
+<div *ngIf="message === 'serverError'">
+	<div class="loaders">
+		<div class="container">
+			<div class="serverError">
+			</div>
+			<div class="content-error">
+				<h2>Oops! It seems that the server is down :(</h2>
+				<p>We are working on it, please try again later!</p>
+				<a (click)="closeCheck()" class="back-button">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'error'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>Oops! something has gone wrong :(</h2>
+				<p>{{ details }}</p>
+				<a (click)="closeCheck()" class="back-button">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'report'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>Data registered correctly :)</h2>
+				<p>{{ details }}</p>
+				<a (click)="closeCheck()" class="back-button">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'register'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>You registered correctly :)</h2>
+				<p>{{ details }}</p>
+				<a (click)="closeCheck()" class="back-button">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'likeUser'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>Data registered correctly :)</h2>
+				<p>{{ details }}</p>
+				<a (click)="closeCheck()" class="back-button">Okay</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'support'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>Data registered correctly :)</h2>
+				<p>{{ details }}</p>
+				<a (click)="goBack()" class="back-button">Okay</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'update'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>Data registered correctly :)</h2>
+				<p>{{ details }}</p>
+				<a (click)="backToSettings()" class="back-button">Okay</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'channelUpdate'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>Data registered correctly :)</h2>
+				<p>{{ details }}</p>
+				<a (click)="backToChannel()" class="back-button">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'groupUpdate'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<h2>Data registered correctly :)</h2>
+				<p>{{ details }}</p>
+				<a (click)="backToGroups()" class="back-button">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="message === 'soon'">
+	<div class="loaders">
+		<div class="container">
+			<div class="error">
+				<div class="loader"><div></div></div>
+			</div>
+			<div class="content-error">
+				<p>{{ details }}</p>
+				<a (click)="closeCheck()" class="back-button">Back</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script
+  src="https://kit.fontawesome.com/dc427c2d29.js"
+  crossorigin="anonymous"
+></script>

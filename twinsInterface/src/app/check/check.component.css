@@ -1,0 +1,115 @@
+.loaders {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000030;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container {
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
+	text-align: center;
+  gap: calc(var(--index) * 5);
+	background-color: #ffffff;
+	padding: calc(var(--index) * 2);
+	border-radius: 25px;
+	box-shadow: 0 2px 10px #0000001a;
+  font-family: outfit;
+  margin: calc(var(--index) * 1);
+}
+
+.serverError {
+  background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+  height: 400px;
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  margin: auto;
+}
+.error {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+.content-error {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: calc(var(--index) * 1);
+  font-size: calc(var(--index) * 1);
+}
+.content-error p {
+  font-size: calc(var(--index) * 1.3);
+}
+.back-button {
+	color: #ffffff;
+  padding: calc(var(--index) * 1.5);
+  font-size: calc(var(--index) * 1.5);
+  font-weight: 900;
+  background: #E94057;
+  margin: calc(var(--index) * 1);
+  cursor: pointer;
+}
+
+.loader {
+  display: inline-block;
+  position: relative;
+  width: calc(var(--index) * 3);
+  height: calc(var(--index) * 3);
+  transform: rotate(45deg);
+  transform-origin: 40px 40px;
+  margin: calc(var(--index) * 8);
+}
+.loader div {
+  top: calc(var(--index) * 3);
+  left: calc(var(--index) * 3);
+  position: absolute;
+  width: calc(var(--index) * 3);
+  height: calc(var(--index) * 3);
+  background: #ff0000;
+  animation: loader45 1.2s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.loader div:after,
+.loader div:before {
+  content: " ";
+  position: absolute;
+  display: block;
+  width: calc(var(--index) * 3);
+  height: calc(var(--index) * 3);
+  background: #ff0000;
+}
+.loader div:before {
+  left: calc(var(--index) * -2);
+  border-radius: 50% 0 0 50%;
+}
+.loader div:after {
+  top: calc(var(--index) * -2);
+  border-radius: 50% 50% 0 0;
+}
+@keyframes loader45 {
+  0% {
+    transform: scale(0.95);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}

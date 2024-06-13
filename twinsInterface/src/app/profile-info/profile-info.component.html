@@ -1,0 +1,76 @@
+<div *ngIf="message === 'user'">
+  <div class="user_profile">
+    <div class="profile_card">
+      <div class="profile_image">
+        <img [src]="profile.foto || '../../assets/img/2556_awm23262662.jpg'">
+      </div>
+      <div class="profile_buttons">
+        <button class="profile_delete" (click)="onUnmatchUser()">
+          <i class="fas fa-trash"></i>
+        </button>
+        <button class="profile_like" (click)="onChatUser()">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+        <button class="profile_close" (click)="closeProfileInfo()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="profile_info">
+        <div class="profile_title">
+          <h1>{{ profile.first_name }} {{ profile.last_name }}, {{ profile.date_of_birth }}</h1>
+          <p>{{ profile.orientation }}</p>
+        </div>
+        <div class="profile_country">
+          <h2>Country</h2>
+          <p>{{ profile.country_iso }}, {{ profile.city }}</p>
+        </div>
+        <div class="profile_about">
+          <h2>About</h2>
+          <p>{{ profile.description }}</p>
+        </div>
+        <div class="profile_networks">
+          <label *ngIf="hasNetwork('instagram')" class="network-icon instagram">
+            <a [href]="getNetworkUrl('instagram')" target="_blank">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </label>
+          <label *ngIf="hasNetwork('snapchat')" class="network-icon snapchat">
+            <a [href]="getNetworkUrl('snapchat')" target="_blank">
+              <i class="fab fa-snapchat"></i>
+            </a>
+          </label>
+          <label *ngIf="hasNetwork('twitter')" class="network-icon twitter">
+            <a [href]="getNetworkUrl('twitter')" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </label>
+          <label *ngIf="hasNetwork('vk')" class="network-icon vk">
+            <a [href]="getNetworkUrl('vk')" target="_blank">
+              <i class="fab fa-vk"></i>
+            </a>
+          </label>
+          <label *ngIf="hasNetwork('discord')" class="network-icon discord">
+            <a [href]="getNetworkUrl('discord')" target="_blank">
+              <i class="fab fa-discord"></i>
+            </a>
+          </label>
+          <label *ngIf="hasNetwork('tiktok')" class="network-icon tiktok">
+            <a [href]="getNetworkUrl('tiktok')" target="_blank">
+              <i class="fab fa-tiktok"></i>
+            </a>
+          </label>
+          <label *ngIf="hasNetwork('twitch')" class="network-icon twitch">
+            <a [href]="getNetworkUrl('twitch')" target="_blank">
+              <i class="fab fa-twitch"></i>
+            </a>
+          </label>
+          <label *ngIf="hasNetwork('bereal')" class="network-icon bereal">
+            <a [href]="getNetworkUrl('bereal')" target="_blank">
+              <i class="fas fa-star"></i>
+            </a>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

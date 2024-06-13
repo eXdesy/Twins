@@ -1,0 +1,180 @@
+.user_profile {
+	position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+	height: 100%;
+  background-color: #00000030;
+  z-index: 60;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.profile_card {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
+	text-align: center;
+	border-top-left-radius: 100px;
+	border-top-right-radius: 100px;
+	box-shadow: 0 2px 10px #0000001a;
+}
+.profile_image {
+	width: 100%;
+	height: auto;
+	position: relative;
+	z-index: 60;
+	top: calc(var(--index) * 12);
+}
+.profile_image img {
+	width: 100%;
+	height: calc(var(--index) * 25);
+	border-top-left-radius: 100px;
+	border-top-right-radius: 100px;
+	object-fit: cover;
+}
+
+.profile_buttons {
+	position: relative;
+	z-index: 62;
+	top: calc(var(--index) * 5);
+	display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: calc(var(--index) * 1);
+  gap: calc(var(--index) * 2);
+}
+.profile_close {
+  width: calc(var(--index) * 6);
+  height: calc(var(--index) * 6);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--index) * 3);
+  color: #F27121;
+  background-color: #ffffff;
+  box-shadow: 0px 15px 15px #f2712131;
+}
+.profile_like {
+  width: calc(var(--index) * 7);
+  height: calc(var(--index) * 7);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--index) * 3);
+  color: #ffffff;
+  background-color: #E94057;
+  box-shadow: 0px 15px 15px #e940572d;
+}
+.profile_delete {
+  width: calc(var(--index) * 6);
+  height: calc(var(--index) * 6);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--index) * 2);
+  color: #ffffff;
+  background-color: #8A2387;
+  box-shadow: 0px 15px 15px #8a238736;
+}
+
+.profile_info {
+	z-index: 61;
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+  justify-content: center;
+	text-align: center;
+	background-color: #ffffff;
+	gap: calc(var(--index) * 2);
+  padding: calc(var(--index) * 5) calc(var(--index) * 2);
+	border-top-left-radius: 100px;
+	border-top-right-radius: 100px;
+}
+.profile_title {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	font-size: calc(var(--index) * 1.5);
+  font-family: outfit;
+	text-align: left;
+}
+.profile_country {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	font-size: calc(var(--index) * 1.4);
+  font-family: outfit;
+}
+.profile_about {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	text-align: left;
+	font-size: calc(var(--index) * 1.4);
+  font-family: outfit;
+}
+.profile_networks {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+	flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+	margin: auto;
+  gap: calc(var(--index) * 1);
+}
+.network-icon {
+	padding: calc(var(--index) * 1);
+  font-size: calc(var(--index) * 1);
+  width: calc(var(--index) * 3);
+  text-decoration: none;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+.network-icon.instagram {
+  background-color: #E4405F;
+}
+.network-icon.snapchat {
+  background-color: #FFFC00;
+  color: #000000;
+}
+.network-icon.twitter {
+  background-color: #1DA1F2;
+}
+.network-icon.vk {
+  background-color: #4680C2;
+}
+.network-icon.discord {
+  background-color: #7289DA;
+}
+.network-icon.tiktok {
+  background-color: #010101;
+}
+.network-icon.twitch {
+  background-color: #6441A5;
+}
+.network-icon.bereal {
+  background-color: #000000;
+}
+.network-icon a {
+  color: inherit;
+  text-decoration: none;
+}

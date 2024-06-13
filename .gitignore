@@ -1,0 +1,113 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+# Aplica estas reglas al directorio twinsInterface
+# Compiled output
+/twinsInterface/dist
+/twinsInterface/tmp
+/twinsInterface/out-tsc
+/twinsInterface/bazel-out
+
+# Node
+/twinsInterface/node_modules
+/twinsInterface/npm-debug.log
+/twinsInterface/yarn-error.log
+
+# IDEs and editors
+/twinsInterface/.idea/
+/twinsInterface/.project
+/twinsInterface/.classpath
+/twinsInterface/.c9/
+/twinsInterface/*.launch
+/twinsInterface/.settings/
+/twinsInterface/*.sublime-workspace
+
+# Visual Studio Code
+/twinsInterface/.vscode/*
+!/twinsInterface/.vscode/settings.json
+!/twinsInterface/.vscode/tasks.json
+!/twinsInterface/.vscode/launch.json
+!/twinsInterface/.vscode/extensions.json
+/twinsInterface/.history/*
+
+# Miscellaneous
+/twinsInterface/.angular/cache
+/twinsInterface/.sass-cache/
+/twinsInterface/connect.lock
+/twinsInterface/coverage
+/twinsInterface/libpeerconnection.log
+/twinsInterface/testem.log
+/twinsInterface/typings
+
+# System files
+/twinsInterface/.DS_Store
+/twinsInterface/Thumbs.db
+
+# Python environments
+/twinsInterface/venv/
+/twinsInterface/env/
+/twinsInterface/.venv/
+/twinsInterface/.env/
+
+# Python compiled files
+/twinsInterface/*.env
+
+/twinsInterface/__pycache__/
+/twinsInterface/*.py[cod]
+/twinsInterface/*$py.class
+
+# SQLite databases
+/twinsInterface/*.sqlite3
+
+# Logs
+/twinsInterface/*.log
+
+# Other caches and tox
+/twinsInterface/.cache/
+/twinsInterface/.coverage
+/twinsInterface/.pytest_cache/
+/twinsInterface/.tox/
+/twinsInterface/.nox/
+
+# Additional IDE settings
+/twinsInterface/.vscode/
+/twinsInterface/.idea/
+/twinsInterface/*.sublime-project
+/twinsInterface/*.sublime-workspace
+
+# Migrations
+/twinsInterface/migrations/versions/
+
+# System files (repeated)
+/twinsInterface/.DS_Store
+/twinsInterface/Thumbs.db
+
+# Aplica estas reglas al directorio twinsApi
+twinsApi/venv/
+twinsApi/env/
+twinsApi/.venv/
+twinsApi/.env/
+
+twinsApi/*.env
+
+twinsApi/__pycache__/
+twinsApi/*.py[cod]
+twinsApi/*$py.class
+
+twinsApi/*.sqlite3
+
+twinsApi/*.log
+
+twinsApi/.cache/
+twinsApi/.coverage
+twinsApi/.pytest_cache/
+twinsApi/.tox/
+twinsApi/.nox/
+
+twinsApi/.vscode/
+twinsApi/.idea/
+twinsApi/*.sublime-project
+twinsApi/*.sublime-workspace
+
+twinsApi/migrations/versions/
+
+twinsApi/.DS_Store
+twinsApi/Thumbs.db

@@ -1,0 +1,70 @@
+<div class="wrapper">
+  <div class="content">
+    <header></header>
+    <main>
+      <div class="container" [class.right-panel-active]="containerActive">
+        <div *ngIf="activeForm === 'login'" class="form-container sign-in-container active">
+          <div class="heading">
+            <h1>twins</h1>
+          </div>
+          <form class="form" (submit)="onLogin(username_login.value, password_login.value)">
+            <input class="input" #username_login type="text" name="text" placeholder="Username" required="">
+            <input class="input" #password_login type="password" name="password" placeholder="Password" required="">
+            <span class="forgot-password"><a href="/support">Forgot Password ?</a></span>
+            <div class="button-container">
+              <input id="login-button" class="login-button" type="submit" value="Login">
+              <button id="registerBtn" class="register-button" (click)="togglePanel(true)">Register</button>
+            </div>
+            <div id="response"></div>
+          </form>
+        </div>
+    
+        <div *ngIf="activeForm === 'register'" class="form-container sign-up-container">
+          <div class="heading">
+            <h1>twins</h1>
+          </div>
+          <form class="form" (submit)="onRegister(firstname_register.value, lastname_register.value, username_register.value, password_register.value, gender_register)">
+            <input class="input" #firstname_register id="firstname_register" type="text" name="text" placeholder="Firstname" required="">
+            <input class="input" #lastname_register id="lastname_register" type="text" name="text" placeholder="Lastname" required="">
+            <input class="input" #username_register id="username_register" type="text" name="text" placeholder="Username" required="" >
+            <input class="input" #password_register type="password" name="password" placeholder="Password" required="">
+            <section>
+              <label class="switch">
+                <p>Female</p>
+                <input #gender_register type="checkbox" class="checkbox" value="Male">
+                <div class="slider"></div>
+                <p>Male</p>
+              </label>
+            </section>
+            <span class="forgot-password"><a href="/support">Need help ?</a></span>
+            <div class="button-container">
+              <button id="loginBtn" class="login-button" (click)="togglePanel(false)">Back</button>
+              <input id="register-button" class="register-button" type="submit" value="Register">
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+  </div>
+</div>
+<div *ngIf="showCheck">
+	<app-check></app-check>
+</div>
+<script src="https://telegram.org./js/telegram-web-app.js">
+  // TELEGRAM API
+  let tg = window.Telegram.WebApp;
+  let registerBtn = document.getElementById('registerBtn');
+  tg.expand();
+
+  registerBtn.addEventListener('click', () => {
+    tg.initDataUnsafe.user.id;
+    document.getElementById('firstname').value = tg.initDataUnsafe.user.first_name;
+    document.getElementById('lastname').value = tg.initDataUnsafe.user.last_name;
+    document.getElementById('username').value = tg.initDataUnsafe.user.username;
+
+    // Pasar user_id a Angular
+    let appComponent = window.angular.element(document.querySelector('app-auth')).scope().$ctrl;
+    appComponent.setUserId(tg.initDataUnsafe.user.id);
+  }); 
+</script>

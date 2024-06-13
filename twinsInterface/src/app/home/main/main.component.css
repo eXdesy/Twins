@@ -1,0 +1,45 @@
+main {
+  margin-top: calc(var(--index) * 14);
+  margin-bottom: calc(var(--index) * 5);
+}
+.container {
+	width: 100%;
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: auto;
+}
+
+.nav_menu {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ffffff;
+	margin: auto;
+  gap: calc(var(--index) * 1);
+  padding: calc(var(--index) * 1);
+}
+.nav_menu label {
+  width: 100%;
+  padding: calc(var(--index) * 1);
+  border: 1px solid #E94057;
+  font-family: outfit;
+  font-size: calc(var(--index) * 1.5);
+  cursor: pointer;
+	border-radius: 25px;
+}
+.nav_menu label:has(input:checked) {
+  background-color: #E94057;
+  color: #ffffff;
+  fill: #ffffff;
+}
+.nav_menu svg {
+  height: calc(var(--index) * 1.5);
+}
+.nav_menu input {
+  display: none;
+}

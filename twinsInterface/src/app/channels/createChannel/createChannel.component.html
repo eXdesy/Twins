@@ -1,0 +1,89 @@
+<div class="wrapper">
+  <div class="content">
+    <header>
+      <div class="heading">
+        <h1>Update Channel</h1>
+      </div>
+    </header>
+    <main>
+      <div class="container" id="container">
+        <div class="prof-container">
+          <div class="prof">
+            <div class="prof-img" (click)="toggleOverlay()">
+              <img #foto [src]="channel.foto || '../../assets/img/image.png'" />
+              <div class="overlay" #overlay>
+                <p>Pulsa para reemplazar imagen</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="flex">
+                <div class="form__group field">
+                  <input #name type="text" class="form__field" placeholder="Channel Name" value="{{ channel.name }}" required="">
+                  <label class="form__label">Channel Name</label>
+                </div>
+								<div class="form__group">
+									<select #country class="form__select" id="countrySelect" (change)="loadCountries()" [value]="channel.country">
+										<option value="" disabled selected>Choose your country</option>
+									</select>
+									<label class="form__label label__select" for="countrySelect">Country</label>
+								</div>
+                <div class="form__group field">
+                  <input #price type="number" class="form__field" placeholder="Channel Price" value="{{ channel.price }}" required="">
+                  <label class="form__label">Channel Price</label>
+                </div>
+                <div class="form__group">
+                  <select #category class="form__select" id="orientationSelect" value="{{ channel.category }}">
+                    <option value="" disabled selected>Channel category</option>
+										<option value="Blog">Blog</option>
+										<option value="Shopping">Shopping</option>
+										<option value="Programming">Programming</option>
+										<option value="Cooking">Cooking</option>
+										<option value="Finance">Finance</option>
+										<option value="Art">Art</option>
+										<option value="Erotica">Erotica</option>
+										<option value="Traveling">Traveling</option>
+										<option value="Design">Design</option>	
+										<option value="Entertaiment">Entertaiment</option>
+										<option value="Science">Science</option>
+										<option value="Extreme">Extreme</option>
+										<option value="Music">Music</option>
+										<option value="Movies">Movies</option>
+										<option value="Games">Games</option>
+										<option value="Other">Other</option>
+                  </select>
+                  <label class="form__label label__select" for="orientationSelect">Channel Category</label>
+                </div>
+              </div>
+              <div class="form__group field">
+                <input #link type="text" class="form__field" placeholder="Channel Link" value="{{ channel.link }}" required="">
+                <label class="form__label">Channel Link</label>
+              </div>
+              <div class="form__group field">
+                <textarea #description class="form__field" id="description" placeholder="Channel Description" 
+                  [value]="channel.description" (input)="updateCharCount()" maxlength="250" required></textarea>
+                <label class="form__label">Channel Description</label>
+                <div class="char-counter" id="charCounter">{{ charCount }}/250</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="radio-input">
+        <label>
+          <input type="radio" id="value-1" name="value-radio" value="value-1" (click)="navigateTo('channels')" checked>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Back</span>
+        </label>
+        <label>
+          <input type="radio" id="value-2" name="value-radio" value="value-2" (click)="onCreateChannel(foto.src, name.value, category.value, description.value, country.value, price.value, link.value)">
+          <span>Save</span>
+        </label>
+      </div>
+    </footer>
+  </div>
+</div>
+<div *ngIf="showCheck">
+	<app-check></app-check>
+</div>

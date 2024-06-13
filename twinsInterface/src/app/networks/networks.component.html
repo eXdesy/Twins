@@ -1,0 +1,66 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<div class="wrapper">
+  <div class="content">
+    <header>
+      <div class="heading">
+        <h1>Link Settings</h1>
+      </div>
+    </header>
+    <main>
+      <div class="container" id="container">
+        <div class="prof-container">
+          <div class="flex">
+              <div class="form__group field">
+                <i class="fab fa-instagram"></i>
+                <input #Instagram type="text" class="form__field" placeholder="Instagram Link" value="{{ networks.instagram }}">
+              </div>
+              <div class="form__group field">
+                <i class="fab fa-snapchat"></i>
+                <input #Snapchat type="text" class="form__field" placeholder="Snapchat Link" value="{{ networks.snapchat }}">
+              </div>
+              <div class="form__group field">
+                <i class="fab fa-twitter"></i>
+                <input #Twitter type="text" class="form__field" placeholder="Twitter Link" value="{{ networks.twitter }}">
+              </div>
+              <div class="form__group field">
+                <i class="fab fa-vk"></i>
+                <input #VK type="text" class="form__field" placeholder="VK Link" value="{{ networks.vk }}">
+              </div>
+              <div class="form__group field">
+                <i class="fab fa-discord"></i>
+                <input #Discord type="text" class="form__field" placeholder="Discord Link" value="{{ networks.discord }}">
+              </div>
+              <div class="form__group field">
+                <i class="fab fa-tiktok"></i>
+                <input #TikTok type="text" class="form__field" placeholder="TikTok Link" value="{{ networks.tiktok }}">
+              </div>
+              <div class="form__group field">
+                <i class="fab fa-twitch"></i>
+                <input #Twitch type="text" class="form__field" placeholder="Twitch Link" value="{{ networks.twitch }}">
+              </div>
+              <div class="form__group field">
+                <i class="fab fa-bereal">BeReal.</i>
+                <input #Bereal type="text" class="form__field" placeholder="Bereal Link" value="{{ networks.bereal }}">
+              </div>
+            </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="nav-input">
+        <label>
+          <input type="radio" id="value-1" name="value-radio" value="value-1" (click)="navigateTo('home/settings')" checked>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Back</span>
+        </label>
+        <label>
+          <input type="radio" id="value-2" name="value-radio" value="value-2" (click)="onUpdateNetwork(Instagram.value, Snapchat.value, Twitter.value, VK.value, Discord.value, TikTok.value, Twitch.value, Bereal.value)">
+          <span>Save</span>
+        </label>
+      </div>
+    </footer>
+  </div>
+</div>
+<div *ngIf="showCheck">
+	<app-check></app-check>
+</div>

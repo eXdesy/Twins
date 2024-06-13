@@ -1,0 +1,36 @@
+main {
+  margin-top: calc(var(--index) * 10);
+  margin-bottom: calc(var(--index) * 5);
+}
+.container {
+	width: 100%;
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: auto;
+}
+.setting_nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  width: 100%;
+  margin-top: calc(var(--index) * -3);
+  margin-bottom: calc(var(--index) * 3);
+  border-bottom: 1px solid #E94057;
+  text-align: center;
+}
+.nav_button {
+  color: #000000;
+  padding: calc(var(--index) * 1.5);
+  margin: 0 calc(var(--index) * 1);
+  border-bottom: 1px solid #000000;
+  font-size: calc(var(--index) * 2.5);
+  font-family: outfit;
+  cursor: pointer;
+  background: none;
+}
+.red {
+  color: #E94057;
+}

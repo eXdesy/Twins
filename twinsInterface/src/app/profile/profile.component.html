@@ -1,0 +1,84 @@
+<div class="wrapper">
+  <div class="content">
+    <header>
+      <div class="heading">
+        <h1>Profile Settings</h1>
+      </div>
+    </header>
+    <main>
+      <div class="container" id="container">
+        <div class="prof-container">
+          <div class="prof">
+            <h1 class="project-title">{{ profile.username }}</h1>
+            <div class="prof-img" (click)="toggleOverlay()">
+              <img #foto [src]="profile.foto || '../../assets/img/image.png'" />
+              <div class="overlay" #overlay>
+                <p>Pulsa para reemplazar imagen</p>
+              </div>
+            </div>
+            <div class="project-info">
+              <div class="flex">
+                <div class="form__group field">
+                  <input #first_name type="text" class="form__field" placeholder="First Name" value="{{ profile.first_name }}" required="">
+                  <label class="form__label">First Name</label>
+                </div>
+                <div class="form__group field">
+                  <input #last_name type="text" class="form__field" placeholder="Last Name" value="{{ profile.last_name }}" required="">
+                  <label class="form__label">Last Name</label>
+                </div>
+                <div class="form__group">
+                  <select #country class="form__select" id="countrySelect" (change)="onCountryChange()" [value]="profile.country">
+                    <option value="" disabled selected>Choose your country</option>
+                  </select>
+                  <label class="form__label label__select" for="countrySelect">Country</label>
+                </div>
+                <div class="form__group">
+                  <select #city class="form__select" id="citySelect" [value]="profile.city">
+                    <option value="" disabled selected>Choose your city</option>
+                  </select>
+                  <label class="form__label label__select" for="citySelect">City</label>
+                </div>
+                <div class="form__group field">
+                  <input #birthday type="date" class="form__field" placeholder="Birthday" value="{{ profile.date_of_birth }}" required="">
+                </div>
+                <div class="form__group">
+                  <select #orientation class="form__select" id="orientationSelect" value="{{ profile.orientation }}">
+                    <option value="" disabled selected>Choose your orientation</option>
+                    <option value="homosexual">Homosexual</option>
+                    <option value="bisexual">Bisexual</option>
+                    <option value="heterosexual">Heterosexual</option>
+                    <option value="lesbian">Lesbian</option>
+                    <option value="other">Other</option>
+                  </select>
+                  <label class="form__label label__select" for="orientationSelect">Orientation</label>
+                </div>
+              </div>
+              <div class="form__group field">
+                <textarea #description class="form__field" id="description" placeholder="Channel Description" 
+                  [value]="profile.description" (input)="updateCharCount()" maxlength="250" required></textarea>
+                <label class="form__label">Channel Description</label>
+                <div class="char-counter" id="charCounter">{{ charCount }}/200</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="radio-input">
+        <label>
+          <input type="radio" id="value-1" name="value-radio" value="value-1" (click)="navigateTo('home/settings')" checked>
+          <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-left"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          <span>Back</span>
+        </label>
+        <label>
+          <input type="radio" id="value-2" name="value-radio" value="value-2" (click)="onUpdateProfile(first_name.value, last_name.value, country.value, city.value, birthday.value, orientation.value, description.value, foto.src)">
+          <span>Save</span>
+        </label>
+      </div>
+    </footer>
+  </div>
+</div>
+<div *ngIf="showCheck">
+	<app-check></app-check>
+</div>

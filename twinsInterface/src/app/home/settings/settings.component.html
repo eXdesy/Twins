@@ -1,0 +1,18 @@
+<header>
+	<div class="heading">
+		<h1>Settings</h1>
+	</div>
+</header>
+<main>
+	<div class="container" id="container">
+		<div class="setting_nav">
+			<a class="nav_button" (click)="navigateTo('profile')">Profile</a>
+			<a class="nav_button" (click)="navigateTo('networks')">Networks</a>
+			<a class="nav_button" (click)="navigateTo('channels')">Channels</a>
+			<a class="nav_button" (click)="navigateTo('groups')">Groups</a>
+			<a class="nav_button" (click)="navigateTo('password')">Password</a>
+			<a class="nav_button" (click)="navigateTo('support')">Support</a>
+			<a class="nav_button red" (click)="onLogout()">Logout</a>
+		</div>
+	</div>
+</main>
