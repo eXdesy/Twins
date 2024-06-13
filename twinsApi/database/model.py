@@ -4,12 +4,14 @@ from datetime import date
 class LoginUser(BaseModel):
 	username: str
 	password: str
+	current_id: int
 
 class UpdatePassword(BaseModel):
 	old_password: str
 	new_password: str
 
 class NewUser(BaseModel):
+  user_id: int
   role: str
   username: str
   password: str

@@ -11,7 +11,7 @@ auth_routes = APIRouter()
 def register(newUser: NewUser):
   print(newUser.model_dump())
   if newUser:
-    return register_user(newUser.role, newUser.username, newUser.password, newUser.gender, newUser.first_name, newUser.last_name)
+    return register_user(newUser.user_id, newUser.role, newUser.username, newUser.password, newUser.gender, newUser.first_name, newUser.last_name)
   else:
     return JSONResponse(content={"message": "Unexpected error"}, status_code=404)
 
@@ -19,7 +19,7 @@ def register(newUser: NewUser):
 def login(loginUser: LoginUser):
   print(loginUser.model_dump())
   if loginUser:
-    return login_user(loginUser.username, loginUser.password)
+    return login_user(loginUser.username, loginUser.password, loginUser.current_id)
   else:
     return JSONResponse(content={"message": "Unexpected error"}, status_code=404)
 

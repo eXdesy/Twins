@@ -7,58 +7,56 @@ from middlewares.functions_jwt import *
 from database.model import *
 
 # Function to register a new user in the database
-def register_user(role, username, password, gender, first_name, last_name):
-    # Verify that no input values are null or empty
-    if not all([role, username, password, gender, first_name, last_name]):
-        return JSONResponse(content={"message": "All fields must be provided and non-empty."}, status_code=400)
-    # Connect to the database
-    conn = connect_db()
-    cursor = conn.cursor()
-    # Hash the password
-    hashed_password = hash_password(password)
-    # Prepare user and profile data
-    date_of_registry = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    user_data = (role, username, hashed_password, gender, date_of_registry)
-    try:
-        # Insert user data into 'user' table
-        cursor.execute('''
-            INSERT INTO user (role, username, password, gender, date_of_registry) 
-            VALUES (?, ?, ?, ?, ?)
-        ''', user_data)
-        conn.commit()
-        # Get the last inserted user_id
-        cursor.execute('SELECT last_insert_rowid()')
-        user_id = cursor.fetchone()[0]
-        if user_id:
-            # Insert profile data into 'profile' table
-            cursor.execute('''
-                INSERT INTO profile (user_id, first_name, last_name) 
-                VALUES (?, ?, ?)
-            ''', (user_id, first_name, last_name))
-            conn.commit()
-            # Insert default values into 'networks' table
-            cursor.execute('''
-                INSERT INTO networks (profile_id) 
-                VALUES (?)
-            ''', (user_id,))
-            conn.commit()
-            # Return message upon successful registration
-            return JSONResponse(content={"message": "You can now log in!"}, status_code=200)
-    except sqlite3.IntegrityError:
-        # Handle integrity errors, such as duplicate usernames
-        return JSONResponse(content={"message": "User already created with this username!"}, status_code=400)
-    except sqlite3.OperationalError as e:
-        # Handle operational errors, such as issues with the database connection
-        return JSONResponse(content={"message": "Something was wrong: " + str(e)})
-    except sqlite3.Error as e:
-        # Handle generic SQLite errors
-        return JSONResponse(content={"message": "Database error: " + str(e)}, status_code=500)
-    finally:
-        # Close the database connection
-        close_db()
+def register_user(user_id, role, username, password, gender, first_name, last_name):
+  # Verify that no input values are null or empty
+  if not all([user_id, role, username, password, gender, first_name, last_name]):
+    return JSONResponse(content={"message": "All fields must be provided and non-empty."}, status_code=400)
+  # Connect to the database
+  conn = connect_db()
+  cursor = conn.cursor()
+  # Create data dictionary for the token
+  user_dict = {
+    'user_id': user_id,
+    'role': role,
+    'username': username,
+    'gender': gender,
+  }
+  # Hash the password and generate token
+  hashed_password = hash_password(password)
+  token = write_token(user_dict)
+  # Prepare user and profile data
+  date_of_registry = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+  user_data = (user_id, user_id, role, username, hashed_password, token, gender, date_of_registry)
+  profile_data = (user_id, user_id, first_name, last_name)
+  try:
+    # Insert user data into 'user' table
+    cursor.execute('''
+      INSERT INTO user (user_id, current_id, role, username, password, token, gender, date_of_registry) 
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    ''', user_data)
+    # Insert profile data into 'profile' table
+    cursor.execute('INSERT INTO profile (profile_id, user_id, first_name, last_name) VALUES (?, ?, ?, ?)', profile_data)
+    # Insert default values into other related tables
+    cursor.execute('INSERT INTO networks (profile_id) VALUES (?)', (user_id,))
+    # Commit changes to the database
+    conn.commit()
+    # Return token upon successful registration
+    return JSONResponse(content={"message": "You can now log in!"}, status_code=200)
+  except sqlite3.IntegrityError as e:
+    # Handle integrity errors, such as duplicate usernames
+    return JSONResponse(content={"message": "User already created with this username!"}, status_code=400)
+  except sqlite3.OperationalError as e:
+    # Handle operational errors, such as issues with the database connection
+    return JSONResponse(content={"message": "Something was wrong: " + str(e)})
+  except sqlite3.Error as e:
+    # Handle generic SQLite errors
+    return JSONResponse(content={"message": "Database error: " + str(e)}, status_code=500)
+  finally:
+    # Close the database connection
+    close_db()
 
 # Function to login a user
-def login_user(username, password):
+def login_user(username, password, current_id):
   # Connect to the database
   conn = connect_db()
   cursor = conn.cursor()
@@ -82,7 +80,7 @@ def login_user(username, password):
       # generate token
       token = write_token(user_dict)
       # Update the current_id and token for the user
-      cursor.execute('UPDATE user SET current_id = ?, token = ? WHERE user_id = ?', (user_id, token, user_id))
+      cursor.execute('UPDATE user SET current_id = ?, token = ? WHERE user_id = ?', (current_id, token, user_id))
       conn.commit()
       # Return the token
       return {"token": token}

@@ -12,7 +12,7 @@ declare var window: any;
 })
 export class AuthComponent implements OnInit  {
   constructor(private switchService: SwitchService, private authService: AuthService, private router: Router) { }
-  user_id: number = 0;
+  user_id: number = 1;
   role: string = 'user';
   showCheck: boolean = true;
 
@@ -50,7 +50,7 @@ export class AuthComponent implements OnInit  {
   }
 
   onLogin(username_register: string, password_register: string) {
-    this.authService.login(username_register, password_register).subscribe(
+    this.authService.login(username_register, password_register, this.user_id).subscribe(
       response => {
         localStorage.setItem('token', response.token);
         this.router.navigate(['/home/main']);
@@ -72,7 +72,7 @@ export class AuthComponent implements OnInit  {
   
   onRegister(firstname_register: string, lastname_register: string, username_register: string, password_register: string, gender_register: HTMLInputElement) {
     const gender = gender_register.checked ? 'Male' : 'Female';
-    this.authService.register(this.role, firstname_register, lastname_register, username_register, password_register, gender).subscribe(
+    this.authService.register(this.user_id, this.role, firstname_register, lastname_register, username_register, password_register, gender).subscribe(
       response => {
 				console.log(response);
 				this.switchService.openCheckModal('register', response.message, true);

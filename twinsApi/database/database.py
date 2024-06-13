@@ -19,7 +19,8 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS user (
-    user_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id INTEGER PRIMARY KEY,
+    user_id INTEGER,
     current_id INTEGER,
     role TEXT,
     username TEXT UNIQUE,
@@ -32,7 +33,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS profile (
-    profile_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    profile_id INTEGER PRIMARY KEY,
     user_id INTEGER,
     first_name TEXT,
     last_name TEXT,
@@ -50,7 +51,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS networks (
-    networks_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    networks_id INTEGER PRIMARY KEY,
     profile_id INTEGER,
     instagram TEXT,
     snapchat TEXT,
@@ -66,7 +67,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS channels (
-    channel_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    channel_id INTEGER PRIMARY KEY,
     user_id INTEGER,
     foto TEXT,
     name TEXT,
@@ -82,7 +83,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS joined_channels (
-    joined_channel_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    joined_channel_id INTEGER PRIMARY KEY,
     user_id INTEGER,
     channel_id INTEGER,
     channel_status BOOLEAN,
@@ -93,7 +94,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS groups (
-    group_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER PRIMARY KEY,
     user_id INTEGER,
     foto TEXT,
     name TEXT,
@@ -109,7 +110,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS joined_groups (
-    joined_groups_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    joined_groups_id INTEGER PRIMARY KEY,
     user_id INTEGER,
     group_id INTEGER,
     group_status BOOLEAN,
@@ -120,7 +121,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS likes (
-    like_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    like_id INTEGER PRIMARY KEY,
     profile_id INTEGER,
     liked_profile_id INTEGER,
     like_status BOOLEAN,
@@ -131,7 +132,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS match (
-    match_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    match_id INTEGER PRIMARY KEY,
     profile_id INTEGER,
     match_profile_id INTEGER,
     match_status BOOLEAN,
@@ -142,7 +143,7 @@ def setup_db():
   
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS support (
-    support_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    support_id INTEGER PRIMARY KEY,
     user_id INTEGER,
     username TEXT,
     first_name TEXT,
@@ -154,7 +155,7 @@ def setup_db():
 
   cursor.execute('''
   CREATE TABLE IF NOT EXISTS report (
-    report_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    report_id INTEGER PRIMARY KEY,
     user_id INTEGER,
     report_type_id INTEGER,
     report_type TEXT,
